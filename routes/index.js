@@ -8,7 +8,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', msg: '' });
+  res.render('index', { title: 'Faruk Portfolio', msg: '' });
 });
 
 router.post('/', function(req, res, next) {
