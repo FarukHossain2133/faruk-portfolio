@@ -272,3 +272,10 @@ header {
   text-align: center;
  
 }
+
+#alertMsg  {
+ position: absolute;
+ top: 110px;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}

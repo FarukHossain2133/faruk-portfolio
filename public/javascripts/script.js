@@ -1,6 +1,8 @@
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
   })
+  
+  $('.alert').alert()
 
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()

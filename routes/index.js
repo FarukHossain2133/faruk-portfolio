@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
             </div>`
     };
     sgMail.send(msg);
-    
+  res.render('index', { title: 'Faruk Portfolio', msg: 'Your email successfully send'});
 });
 
 module.exports = router;

@@ -3,10 +3,24 @@
 
 <!-- Header Section -->
 
+  <% if(msg){ %>
+    <div class="alert alert-success alert-dismissible fade show" id="alertMsg" role="alert">
+         <h5><%= msg %></h5>
+        <button type="button"  class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+  <% } %>
+
+
+
+
+
 <header class="d-flex justify-content-center align-items-center text-center ">
   <div class="container-fluid">
       <div class="row">
         <div class="col-sm-10 offset-sm-1">
+         
           <h1 class="display-4 text-uppercase glow text-light" id="farukPort">Faruk Portfolio</h1>
           <p class="lead text-light glow" id="motto" >Nothing is impossible</p>
             <a href="https://github.com/FarukHossain2133" target="_blank" class="btn btn-outline-light text-light " id="btnHead">Read More</a>
