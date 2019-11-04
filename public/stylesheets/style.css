@@ -12,6 +12,13 @@ a {
   text-shadow: 2px 2px black;
 }
 
+#navbarNav a {
+  color: white;
+  transition: all .2s;
+}
+#navbarNav a:hover {
+  color: #ddd;
+}
 #motto {
   letter-spacing: 6px;
   font-size: 14px;
