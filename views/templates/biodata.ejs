@@ -8,8 +8,8 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title text-center">Bio Data</h5>
-                          <hr class="hr ">
+                          <h5 class="card-title text-center bioHeader">Bio Data</h5>
+                        
                           <table class="table table-bordered">
                               <thead>
                                 <tr>
@@ -32,11 +32,30 @@
                                 </tr>
                                 <tr>
                                   <th scope="row">Email</th>
-                                  <td>fa905432@gmail.com</td>
+                                  <td> 
+                                    <input type="text" value="fa905432@gmail.com" id="myInput">
+
+                                    <div class="tooltips">
+                                    <button class="tooltipBtn" onclick="myFunction()" onmouseout="outFunc()">
+                                      <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                                      Copy The Email
+                                      </button>
+                                    </div>
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <th scope="row">Phone</th>
-                                  <td>+8801721343293</td>
+                                  <th scope="row">Phone + whatsapp</th>
+                                  <td>
+                                      <input type="text" value="+8801721343293" id="myInputNumber">
+
+                                      <div class="tooltips">
+                                      <button class="tooltipBtn" onclick="myFunctionNumber()" onmouseout="outFunc()">
+                                        <span class="tooltiptext" id="myTooltipNumber">Copy to clipboard</span>
+                                        Copy The Number
+                                        </button>
+                                      </div>
+                                                                         
+                                  </td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Address</th>
@@ -51,7 +70,7 @@
                                   <td>12 Dec 1997</td>
                                 </tr>
                                 <tr>
-                                  <th scope="row">Sex</th>
+                                  <th scope="row">Gender</th>
                                   <td>Male</td>
                                 </tr>
                                 <tr>

@@ -12,10 +12,6 @@
       </div>
   <% } %>
 
-
-
-
-
 <header class="d-flex justify-content-center align-items-center text-center ">
   <div class="container-fluid">
       <div class="row">
@@ -23,23 +19,76 @@
          
           <h1 class="display-4 text-uppercase glow text-light" id="farukPort">Faruk Portfolio</h1>
           <p class="lead text-light glow" id="motto" >Nothing is impossible</p>
-            <a href="https://github.com/FarukHossain2133" target="_blank" class="btn btn-outline-light text-light " id="btnHead">Read More</a>
+            <a href="https://github.com/FarukHossain2133" target="_blank" class="btn btn-outline-light " id="btnHead">Read More</a>
         </div>
       </div>
   </div>
 </header>
-
 
 <main class="pt-5">
     <!-- Biodata Section -->
     <%- include('templates/biodata.ejs') %>
 
     <!-- Modal + Projects Section -->
-    <div class="container-fluid">
-      <div class="jumbotron bg-color" >
-        <div class="row">
-          <%- include('templates/modal.ejs') %>
-          <%- include('templates/projects.ejs') %>
+    <div class="container-fluid" style="margin-bottom: 30px" id="projectSection">
+      <div class="" >
+        <div class="col-md-6 offset-md-3  projectHeader">
+            <h2>My All Project</h2>  
+            <p>Please hover or click to show projects details</p>        
+        </div>
+       
+    <div class="row d-flex justify-content-center align-items-center">
+
+        <% if(projects.length > 0){ 
+            projects.forEach(function(project, index){ %>
+    
+          <div class="col-md-6 col-lg-6 col-xl-4 text-center my-3 ">
+              <div class="card bg-dark text-white cardHover boxShadow">
+                  <img  src="/uploads/<%= project.picture %>" class="card-img cardImg" alt="faruk gigs">
+                  <div class="card-img-overlay text-center d-flex justify-content-center align-items-center flex-column cardOverlay">
+                    <h5 class="card-title text-center text-uppercase"><%= project.title %></h5>
+                   
+                    <div class="d-flex justify-content-center align-items-center flex-column " style="bottom: 0">
+                      <button type="button" class="btn btn-sm btn-outline-light mt-2 text-uppercase" data-toggle="modal" data-target="#exampleModalCenter<%= index %>">
+                        show site in modal window
+                      </button>
+                      <a href="<%= project.github %>" target="_blank" class="btn btn-light 
+                      btn-sm mt-2 text-uppercase" >
+                        show github source code
+                      </a>
+                      <a href="<%= project.heroku %>" target="_blank" class="btn btn-sm btn-light mt-2 text-uppercase" >
+                        show heroku live
+                      </a>
+                    </div>
+                     
+                    <button type="button" class="btn btn-sm btn-light mt-2 text-uppercase" data-toggle="tooltip" data-placement="bottom" title="<%= project.languages %>">
+                       used languages
+                    </button>
+                  </div>
+              </div>
+        </div>
+    
+       <div class="modal fade" id="exampleModalCenter<%= index %>" tabindex="-1"  role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content ">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle"><%= project.title%></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" >
+                  <iframe class="modalIframe" src="<%= project.heroku %>"></iframe>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        <% }) } %>
+       
         </div>
       </div>
     </div>
@@ -47,14 +96,14 @@
 
    
               <!-- Form Started -->
-            <div class="container-fluid form-top" id="contactMe">
-              <div class="jumbotron bg-color">
+            <div class="container-fluid"  >
+              <div class="jumbotron bg-color" id="contactSection" style="padding-top: -20px">
                 <div class="row">
-                  <div class="col-md-6 offset-md-3 text-center">
-                   <h2 class="display-5 text-uppercase">Contact Form</h2> 
-                   <p class="lead">You can email me or contact any way</p>
+                  <div class=" col-md-6 offset-md-3 contactHeader " >
+                      <h3 class=" text-uppercase">Contact Form</h3> 
+                      <p >You can email me or contact any way</p>
                   </div>
-                  <div class="col-md-6  col-sm-12 col-xs-12 mt-3 boxShadow" style="padding: 20px">
+                  <div class="col-md-6 p-3 my-3" style=" border: 1px solid white; border-radius: 5px;">
                     <div class="panel panel-danger">
                       <div class="panel-body">
                         <form id="reused_form" method="POST" action="/">
@@ -82,7 +131,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6  col-sm-12 col-xs-12 mt-3 boxShadow " style="padding: 20px">
+                  <div class="col-md-6 p-3 my-3" style="border: 1px solid white; border-radius: 5px;" >
                       <div class="mapouter">
                         <div class="gmap_canvas">
                             <iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=jessore%20Bangladesh&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">

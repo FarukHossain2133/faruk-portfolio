@@ -1,17 +1,19 @@
 var express = require('express');
 var router = express.Router();
-const emailTemplate = require('../essential/email-template')
 const sgMail = require('@sendgrid/mail');
+const Projects = require('../models/Projects');
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Faruk Portfolio', msg: '' });
+router.get('/', async function(req, res, next) {
+  const projects = await Projects.find({}).sort({createdAt: -1});
+  if(!projects) throw new Error()
+  res.render('index', { title: 'Faruk Portfolio', msg: '' , projects: projects});
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', async function(req, res, next) {
   const from = req.body.email;
   const name = req.body.name;
   const subject = req.body.subject;
@@ -31,7 +33,11 @@ router.post('/', function(req, res, next) {
             </div>`
     };
     sgMail.send(msg);
-  res.render('index', { title: 'Faruk Portfolio', msg: 'Your email successfully send'});
+
+    const projects = await Projects.find({});
+    if(!projects) throw new Error()
+    
+  res.render('index', { title: 'Faruk Portfolio', msg: 'Your email successfully send', projects: projects});
 });
 
 module.exports = router;

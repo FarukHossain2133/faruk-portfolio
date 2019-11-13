@@ -1,0 +1,136 @@
+
+    <%- include('templates/header.ejs') %>
+    <body class="bg-secondary text-dark">
+    
+
+        <% if(msg){ %>
+            <div class="alert alert-success alert-dismissible fade show alertMsg" style="display: inline-block; left: 50%; top: 0; transform: translate(-50%, 0); z-index: 30; margin-top: 70px;" role="alert">
+                 <h5><%= msg %></h5>
+                <button type="button"  class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true" >&times;</span>
+                </button>
+              </div>
+          <% } %>
+
+            <div class="row mb-1 py-2 bg-light" style="margin-top: 70px;">
+              <div class="col-md-8 offset-md-2 text-center">
+                  <ul class="nav justify-content-center" id="profileNav">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="/users/signup">Add a user</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#"><%= user.name %></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#"><%= user.email %></a>
+                      </li>
+                    </ul>
+                  </div>
+              </div>
+              
+      <div class="row p-4">
+          <div class="col-3 mr-auto bg-secondary bg-light rounded p-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Add Project</a>
+              <a class="nav-link" id="v-pills-all-projects-tab" data-toggle="pill" href="#v-pills-all-projects" role="tab" aria-controls="v-pills-all-projects" aria-selected="false">All Projects</a>
+              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+            </div>
+          </div>
+          <div class="col-8 bg-secondary bg-light rounded p-4">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sint aspernatur temporibus molestias dicta, sapiente placeat, fugit, saepe quisquam soluta animi dolores! Soluta, nisi! Cum nesciunt dolorem iusto excepturi quidem. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sint aspernatur temporibus molestias dicta, sapiente placeat, fugit, saepe quisquam soluta animi dolores! Soluta, nisi! Cum nesciunt dolorem iusto excepturi quidem. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sint aspernatur temporibus molestias dicta, sapiente placeat, fugit, saepe quisquam soluta animi dolores! Soluta, nisi! Cum nesciunt dolorem iusto excepturi quidem. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sint aspernatur temporibus molestias dicta, sapiente placeat, fugit, saepe quisquam soluta animi dolores! Soluta, nisi! Cum nesciunt dolorem iusto excepturi quidem.</p>
+              </div>
+              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                
+          
+              </div>
+            
+              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <!-- Upload Project modal window form -->
+                <div class="modal-body bg-color text-light" style="border-radius: 5px;">
+                  <h3 class="text-center display-4">Add a new project</h3>
+                    <form id="reused_form" method="POST" enctype="multipart/form-data" action="/projects">
+                      <div class="form-group">
+                        <label> Project Title</label>
+                        <input type="text" name="title" class="form-control" placeholder="Enter Your Project Name" required>
+                      </div>
+                       <div class="form-group">
+                          <label> Heroku Link</label>
+                          <input type="text" name="heroku" class="form-control" placeholder="Enter Your Project Heroku Link" required>
+                        </div>
+                        <div class="form-group">
+                          <label> Github Link</label>
+                          <input type="text" name="github" class="form-control" placeholder="Enter Your Project Github Link" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Used Languages</label>
+                          <input type="text" name="languages" class="form-control" placeholder="Enter Your Project Used Languages" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                              </div>
+                              <div class="custom-file">
+                                <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01"
+                                  aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Upload Project Background Photo</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <button class="btn btn-raised btn-block btn-outline-light">Save Project</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+
+              <div class="tab-pane fade" id="v-pills-all-projects" role="tabpanel" aria-labelledby="v-pills-all-projects-tab">
+                  <div class="row d-flex justify-content-center align-items-center">
+                <% if(projects.length > 0){
+                  projects.forEach(function(project){ %>
+                    <div class="col-md-12 col-lg-6 col-xl-6 text-center my-3 ">
+                      <div class="card bg-dark text-white cardHover boxShadow">
+                          <img  src="/uploads/<%= project.picture %>" class="card-img cardImg" alt="faruk gigs">
+                          <div class="card-img-overlay text-center d-flex justify-content-center align-items-center flex-column cardOverlay">
+                            <h5 class="card-title text-center text-uppercase"><%= project.title %></h5>
+                          
+                            <div class="d-flex justify-content-center align-items-center flex-column " style="bottom: 0">
+                            
+                              <a href="<%= project.github %>" target="_blank" class="btn btn-light 
+                              btn-sm mt-2 text-uppercase" >
+                                show github source code
+                              </a>
+                              <a href="<%= project.heroku %>" target="_blank" class="btn btn-sm btn-light mt-2 text-uppercase" >
+                                show heroku live
+                              </a>
+                            </div>
+                            
+                            <button type="button" class="btn btn-sm btn-light mt-2 text-uppercase" data-toggle="tooltip" data-placement="bottom" title="<%= project.languages %>">
+                              used languages
+                            </button>
+                          </div>
+                      </div>
+                  </div>
+                  
+                 <% }) } %>
+         
+                  </div>
+    
+              </div>
+              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                  lorem
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+  
+
+      <%- include('templates/footer.ejs') %>
