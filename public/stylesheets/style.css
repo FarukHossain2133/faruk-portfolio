@@ -44,8 +44,8 @@ a {
 
 @media (max-width: 576px){
   .container-fluid {
-    padding-right: 0 !important;
-    padding-left: 0 !important;
+    padding-right: 7px !important;
+    padding-left: 7px !important;
     
   }
   .card-body {
@@ -67,8 +67,8 @@ a {
   #projectContent {
     padding-right: 0 !important;
     padding-left: 0 !important;
-    margin-right: 0 !important;
-    margin-left: 0 !important;
+    margin-right: 3px !important;
+    margin-left: 3px !important;
   }
 
   #projectMargin {
