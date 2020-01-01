@@ -99,16 +99,15 @@
                             <h5 class="card-title text-center text-uppercase"><%= project.title %></h5>
                           
                             <div class="d-flex justify-content-center align-items-center flex-column " style="bottom: 0">
-                            
+                              <a href="<%= project.heroku %>" target="_blank" class="btn btn-sm btn-light mt-2 text-uppercase" >
+                                show heroku live
+                              </a>
+
                               <a href="<%= project.github %>" target="_blank" class="btn btn-light 
                               btn-sm mt-2 text-uppercase" >
                                 show github source code
                               </a>
-                              <a href="<%= project.heroku %>" target="_blank" class="btn btn-sm btn-light mt-2 text-uppercase" >
-                                show heroku live
-                              </a>
                             </div>
-                            
                             <button type="button" class="btn btn-sm btn-light mt-2 text-uppercase" data-toggle="tooltip" data-placement="bottom" title="<%= project.languages %>">
                               used languages
                             </button>
